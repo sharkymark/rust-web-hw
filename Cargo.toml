@@ -1,0 +1,22 @@
+[package]
+name = "myapp"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+rocket = "0.5.0"
+rocket_dyn_templates = { version = "0.1.0", features = ["handlebars"] }
+rocket_sync_db_pools = { version = "0.1.0", features = ["diesel_sqlite_pool"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+diesel = { version = "2.1.4", features = ["sqlite", "r2d2","chrono"] }
+diesel_migrations = "2.1.0"
+handlebars = "5.1.0"
+r2d2 = "0.8.10"
+chrono = { version = "0.4", features = ["serde"] }
+
+# https://github.com/rwf2/Rocket/releases
+# https://github.com/sunng87/handlebars-rust/releases
+# https://github.com/sfackler/r2d2/releases

@@ -1,0 +1,12 @@
+# Rocket.toml
+[global]
+secret_key = "your_secret_key_here" # Generate a secret key for cookie encryption
+
+[default]
+address = "127.0.0.1"
+port = 8000
+log_level = "debug" # Options: critical, normal, debug
+
+# Database configuration
+[default.databases.sqlite_db]
+url = "sqlite:./db/commissions.db" # Adjust the path as needed

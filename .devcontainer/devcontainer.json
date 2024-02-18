@@ -1,0 +1,17 @@
+{
+  "name": "Rust Development",
+  "dockerFile": "../Dockerfile",
+  "settings": {
+      "terminal.integrated.shell.linux": "/bin/bash"
+  },
+  "extensions": [
+      "rust-lang.rust-analyzer"
+  ],
+  "postCreateCommand": "./init-project.sh",
+  "remoteUser": "root",
+  "remoteEnv": {
+    "DATABASE_URL": "./db/commissions.db"
+}
+}
+
+  
