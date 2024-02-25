@@ -6,5 +6,6 @@ CREATE TABLE commissions (
     attainment DOUBLE,
     variable_comp DOUBLE,
     quota DOUBLE,
+    deal_revenue DOUBLE,
     created_at TIMESTAMP
 );

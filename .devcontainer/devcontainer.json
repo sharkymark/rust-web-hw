@@ -10,7 +10,8 @@
   "postCreateCommand": "./init-project.sh",
   "remoteUser": "root",
   "remoteEnv": {
-    "DATABASE_URL": "./db/commissions.db"
+    "DATABASE_URL": "./db/commissions.db",
+    "RUST_BACKTRACE": "full"
 }
 }
 

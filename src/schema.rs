@@ -8,6 +8,7 @@ diesel::table! {
         attainment -> Nullable<Double>,
         variable_comp -> Nullable<Double>,
         quota -> Nullable<Double>,
+        deal_revenue -> Nullable<Double>,
         created_at -> Nullable<Timestamp>,
     }
 }

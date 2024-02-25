@@ -9,4 +9,4 @@ log_level = "debug" # Options: critical, normal, debug
 
 # Database configuration
 [default.databases.sqlite_db]
-url = "sqlite:./db/commissions.db" # Adjust the path as needed
+url = "./db/commissions.db" # Adjust the path as needed

@@ -5,13 +5,15 @@ FROM rust:latest
 WORKDIR /usr/src/app
 
 # utility to query the database
+RUN apt-get update && apt-get install -y sqlite3
+
 RUN apt-get update && apt-get install libsqlite3-dev
 
 # Install Diesel CLI with SQLite features
 RUN cargo install diesel_cli --no-default-features --features "sqlite"
 
 # Install cargo-expand
-RUN cargo install cargo-expand
+# RUN cargo install cargo-expand
 
 # Copy the contents of your project to the container.
 COPY . .
