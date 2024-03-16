@@ -1,2 +1,4 @@
 /target
-/db
+# need a placeholder file for the directory to be saved
+/db/*
+!/db/.gitkeep
