@@ -24,6 +24,9 @@ else
   echo "Database file found. Skipping migrations."
 fi
 
+# Get latest dependencies
+echo "Updating dependencies..."
+cargo update
 # Then start your application
 exec cargo run
 

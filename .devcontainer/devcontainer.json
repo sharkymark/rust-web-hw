@@ -1,13 +1,21 @@
 {
   "name": "Rust Development",
-  "dockerFile": "../Dockerfile",
-  "settings": {
-      "terminal.integrated.shell.linux": "/bin/bash"
+  "dockerFile": "Dockerfile",
+  "context": ".",
+  "containerEnv": {
+    "CENSUS_API_KEY": "${localEnv:CENSUS_API_KEY}",
+    "GITHUB_PERSONAL_ACCESS_TOKEN": "${localEnv:GITHUB_PERSONAL_ACCESS_TOKEN}"
   },
-  "extensions": [
-      "rust-lang.rust-analyzer"
-  ],
-  "postCreateCommand": "./init-project.sh",
+  "customizations": {
+    "vscode": {
+        "extensions": [
+            "rust-lang.rust-analyzer",
+            "github.copilot"
+        ]
+    }
+},
+  "postCreateCommand": "echo \"${GITHUB_PERSONAL_ACCESS_TOKEN}\" | gh auth login --with-token && echo 'Authentication successful' && git config --global --add safe.directory \"$(git rev-parse --show-toplevel)\"",
+  "postStartCommand": "./init-project.sh",
   "remoteUser": "root",
   "remoteEnv": {
     "DATABASE_URL": "./db/commissions.db",
