@@ -1,64 +1,187 @@
-/* static/style.css */
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-th, td {
-    border: 1px solid #ddd;
-    text-align: left;
-    padding: 8px;
-}
-th {
-    background-color: #f2f2f2;
-}
-tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
+/* static/css/style.css */
 
-/* Style the form */
-.form-container {
-    margin: 0 auto;
-    max-width: 500px;
+/* Base styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f7f6; /* Lighter, softer background */
+    color: #333;
+    margin: 0;
     padding: 20px;
-    background-color: #f3f3f3;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    line-height: 1.6;
 }
 
-.form-container h2 {
+h2 {
+    color: #2c3e50; /* Darker blue-grey for headings */
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: #e0e0e0;
+    margin: 40px 0;
+}
+
+/* Container for overall layout */
+.container {
+    max-width: 1000px; /* Max width for content */
+    margin: 20px auto; /* Center the container */
+    padding: 20px;
+}
+
+/* Form styling */
+.form-container {
+    background-color: #ffffff; /* White background for the form */
+    padding: 30px 40px;
+    border-radius: 12px; /* More rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Softer shadow */
+    margin-bottom: 40px; /* Space below the form */
+    max-width: 550px; /* Slightly wider form */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px; /* More space between form groups */
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+    font-weight: 400; /* Regular weight for labels */
+    color: #555;
 }
 
-.form-group input {
-    width: calc(100% - 22px);
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box; /* To make sure padding doesn't affect the width */
+.form-group input[type="number"] {
+    width: 100%; /* Use full width */
+    padding: 12px 15px; /* More padding */
+    border: 1px solid #ccc; /* Lighter border */
+    border-radius: 6px; /* Slightly rounded inputs */
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif; /* Ensure font consistency */
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
 }
 
-/* Style the submit button */
-.submit-button {
+.form-group input[type="number"]:focus {
+    border-color: #4a90e2; /* Highlight focus with a blue border */
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2); /* Subtle glow on focus */
+    outline: none; /* Remove default outline */
+}
+
+/* Button styling */
+.submit-button, .delete-button {
     width: 100%;
-    padding: 10px;
-    background-color: #007bff;
+    padding: 12px 20px;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     color: white;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 600; /* Bolder text */
+    text-transform: uppercase; /* Uppercase text */
+    letter-spacing: 0.5px; /* Slight letter spacing */
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Smooth transitions */
+    margin-top: 10px; /* Space above button */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.submit-button {
+    background: linear-gradient(45deg, #4a90e2, #50e3c2); /* Fresh gradient */
 }
 
 .submit-button:hover {
-    background-color: #0056b3;
+    background: linear-gradient(45deg, #3a80d2, #40d3b2); /* Darker gradient on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.delete-button {
+    background: linear-gradient(45deg, #e74c3c, #c0392b); /* Red gradient for delete */
+    margin-top: 20px; /* More space above delete button */
+}
+
+.delete-button:hover {
+    background: linear-gradient(45deg, #c0392b, #a93226); /* Darker red on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Table styling */
+.table-container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    overflow-x: auto; /* Allow horizontal scrolling on small screens */
+}
+
+table {
+    width: 100%;
+    border-collapse: separate; /* Use separate borders */
+    border-spacing: 0 10px; /* Add vertical spacing between rows */
+    margin-top: 20px;
+}
+
+th, td {
+    text-align: left;
+    padding: 15px; /* More padding in cells */
+    vertical-align: middle; /* Align content vertically */
+}
+
+thead tr {
+    background-color: transparent; /* No background for header row itself */
+}
+
+th {
+    color: #2c3e50; /* Dark blue-grey header text */
+    font-weight: 600; /* Bolder headers */
+    text-transform: uppercase; /* Uppercase headers */
+    font-size: 0.85rem; /* Slightly smaller header font */
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid #e0e0e0; /* Bottom border for headers */
+}
+
+tbody tr {
+    background-color: #fff; /* White background for rows */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Subtle shadow per row */
+    border-radius: 6px; /* Rounded corners for rows */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+tbody tr:hover {
+    transform: translateY(-3px); /* Lift row slightly on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Increase shadow on hover */
+}
+
+td {
+    border: none; /* Remove cell borders */
+    border-bottom: 1px solid #f0f0f0; /* Very light bottom border for separation */
+}
+
+/* Remove bottom border for the last cell in a row */
+td:last-child {
+    border-bottom: none;
+}
+
+/* Style first and last cells for rounded corners (optional) */
+tbody tr td:first-child {
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+
+tbody tr td:last-child {
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+/* Checkbox styling */
+input[type="checkbox"] {
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    accent-color: #4a90e2; /* Use theme color for checkbox */
 }
