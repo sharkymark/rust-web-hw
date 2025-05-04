@@ -2,10 +2,14 @@
 <html>
 <head>
     <title>Commission Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/static/css/style.css">
     <link rel="icon" href="/static/favicon.ico">
 </head>
 <body>
+<div class="container"> <!-- Added container -->
 
 <div class="form-container">
     <h2>Enter Commission Details (quarterly)</h2>
@@ -26,23 +30,28 @@
     </form>
 </div>
 
-    <hr>
+<hr>
+
+<div class="table-container"> <!-- Added table container -->
     <h2>Commission Records</h2>
     <form action="/delete-row" method="post">
     <table>
+        <thead> <!-- Added thead for semantic structure -->
         <tr>
-            <th>Action</th>
-            <th>Created At</th>  
-            <th>Commission</th>          
+            <th><input type="checkbox" id="select-all"></th> <!-- Added select-all checkbox -->
+            <th>Created At</th>
+            <th>Commission</th>
             <th>Quota Attainment</th>
             <th>Quota</th>
-            <th>Deal Revenue</th>                      
+            <th>Deal Revenue</th>
             <th>Variable Comp</th>
             <th>Variable Rate</th>
         </tr>
+        </thead>
+        <tbody> <!-- Added tbody for semantic structure -->
         {{#each commissions}}
         <tr>
-            <td><input type="checkbox" name="commission_ids" value="{{ id }}"></td>
+            <td><input type="checkbox" class="row-checkbox" name="commission_ids" value="{{ id }}"></td> <!-- Added class -->
             <td>{{ created_at }}</td>
             <td>{{ commission_amt }}</td>
             <td>{{ attainment }}%</td>
@@ -52,10 +61,23 @@
             <td>{{ variable_rate }}</td>
         </tr>
         {{/each}}
-        <input type="submit" value="Delete Selected">
-    </br></br>
-        </table></form>
+        </tbody> <!-- Close tbody -->
     </table>
-</form>
+    <input type="submit" value="Delete Selected" class="delete-button"> <!-- Added class -->
+    </form>
+</div> <!-- Close table-container -->
+
+</div> <!-- Close container -->
+
+<!-- Add script for select-all checkbox functionality -->
+<script>
+    document.getElementById('select-all').addEventListener('change', function(event) {
+        var checkboxes = document.querySelectorAll('.row-checkbox');
+        checkboxes.forEach(function(checkbox) {
+            checkbox.checked = event.target.checked;
+        });
+    });
+</script>
+
 </body>
 </html>
