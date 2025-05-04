@@ -20,9 +20,16 @@ This project is configured to run within a Dev Container. The setup includes:
 *   Diesel CLI (with SQLite support)
 *   Other development tools (Git, curl, etc.)
 *   GitHub CLI for authentication
+*   LLDB for debugging
+*   VS Code extensions:
+    *   Rust Analyzer
+    *   LLDB Debugger
+    *   GitHub Copilot
 *   AI coding agents: Aider, Goose
 *   GitHub Copilot VS Code extension
 
+**Non-root User:**
+The Dockerfile creates a non-root user (`vscode`) with UID 1000 and GID 1000. This user is used to run the application and perform development tasks within the container. Rust `cargo`, `rustup`, and AI coding agents Aider and Goose are configured to run as this non-root user.
 **Setup:**
 
 1.  Ensure you have Docker and the VS Code Dev Containers extension installed.
@@ -40,6 +47,28 @@ VS Code will build the Docker image defined in `.devcontainer/Dockerfile` and st
 
 Once the container is running and the post-start script completes, the application will be accessible (typically at `http://localhost:8000` if running locally, or via the forwarded port in Codespaces/Dev Containers).
 
+## Debugging
+
+> Be sure to break/end the running Rust application before starting a debug session so there isn't a port conflict preventing the debugging session from starting.
+
+LLDB is a powerful, open-source debugger designed for debugging programs written in languages like C, C++, Rust, and others. It is included in the Dev Container setup, specifically the Dockerfile, for Rust development and debugging.
+
+### VS Code extension
+
+1. The `rust-analyzer` and `vadimcn.vscode-lldb` extensions are included in the Dev Container setup for Rust development and debugging.
+1. A `launch.json` file is included in the `.vscode` directory to configure debugging for the Rust application. You can start a debug session by selecting the "Debug Commission Calculator" configuration from the Run and Debug panel in VS Code.
+1. Set a breakpoint in your Rust code first.
+
+### Terminal
+
+Open a terminal in the Dev Container and run the following command to start the application in debug mode:
+
+```bash
+breakpoint set --file src/main.rs --line <line number you want to set the breakpoint on>
+breakpoint list
+run
+```
+This will start the application in debug mode, and you can use the terminal to set breakpoints, inspect variables, and step through the code.
 ## License
 
 MIT License
