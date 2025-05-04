@@ -64,9 +64,16 @@ LLDB is a powerful, open-source debugger designed for debugging programs written
 Open a terminal in the Dev Container and run the following command to start the application in debug mode:
 
 ```bash
-breakpoint set --file src/main.rs --line <line number you want to set the breakpoint on>
-breakpoint list
-run
+lldb
+```
+
+Once in the LLDB prompt, you can set breakpoints, run the application, and inspect variables. For example:
+
+```bash
+(lldb) target create "target/debug/myapp"
+(lldb) breakpoint set --file src/main.rs --line <line number you want to set the breakpoint on>
+(lldb) breakpoint list
+(lldb) run
 ```
 This will start the application in debug mode, and you can use the terminal to set breakpoints, inspect variables, and step through the code.
 ## License
