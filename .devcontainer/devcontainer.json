@@ -2,8 +2,10 @@
   "name": "Rust Development",
   "dockerFile": "Dockerfile",
   "context": ".",
+  "mounts": [
+    "source=${localEnv:HOME}/.gitignore_global,target=/root/.gitignore_global,type=bind,consistency=cached"
+  ],  
   "containerEnv": {
-    "CENSUS_API_KEY": "${localEnv:CENSUS_API_KEY}",
     "GITHUB_PERSONAL_ACCESS_TOKEN": "${localEnv:GITHUB_PERSONAL_ACCESS_TOKEN}"
   },
   "customizations": {
